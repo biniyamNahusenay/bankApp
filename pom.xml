@@ -70,8 +70,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Remove duplicate jjwt-api 0.11.5 dependencies (conflict risk) -->
-
 		<!-- Swagger/OpenAPI -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -103,22 +101,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring-boot.version}</version>  <!-- Explicit version for consistency -->
+				<version>${spring-boot.version}</version>
 				<executions>
 					<execution>
+						<id>repackage</id>
 						<goals>
-							<goal>repackage</goal>  <!-- Builds executable JAR -->
+							<goal>repackage</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.example.bankapp.BankAppApplication</mainClass>  <!-- Replace with your actual main class -->
+					<mainClass>com.backend.backend.BackendApplication</mainClass>  <!-- Confirm this matches your main @SpringBootApplication class -->
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.13.0</version>  <!-- Latest stable version -->
+				<version>3.13.0</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
