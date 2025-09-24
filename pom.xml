@@ -59,22 +59,18 @@
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-api</artifactId>
-			<version>0.11.5</version>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
-			<version>0.11.5</version>
+			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson -->
-			<version>0.11.5</version>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Remove duplicate jjwt-api 0.11.5 dependencies (conflict risk) -->
 
 		<!-- Swagger/OpenAPI -->
 		<dependency>
@@ -107,13 +103,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>  <!-- Explicit version for consistency -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>  <!-- Builds executable JAR -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>com.example.bankapp.BankAppApplication</mainClass>  <!-- Replace with your actual main class -->
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>  <!-- Latest stable version -->
 				<configuration>
-					<source>11</source>
-					<target>11</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
