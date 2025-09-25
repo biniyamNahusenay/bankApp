@@ -29,17 +29,12 @@ import org.springframework.context.annotation.Configuration;
                 termsOfService = "Terms of service"
         ),
         servers = {
-                @Server(
-                        description = "Local ENV",
-                        url = "http://192.168.2.19:8080"
-                )
+                @Server(description = "Production", url = "https://your-backend.up.railway.app"),
+                @Server(description = "Local", url = "http://localhost:8080")
         },
-        security = {
-                @SecurityRequirement(
-                        name = "bearerAuth"
-                )
-        }
+        security = { @SecurityRequirement(name = "bearerAuth") }
 )
+
 @SecurityScheme(
         name = "bearerAuth",
         description = "JWT authentication token",
