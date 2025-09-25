@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
                 termsOfService = "Terms of service"
         ),
         servers = {
-                @Server(description = "Production", url = "https://your-backend.up.railway.app"),
+                @Server(description = "Production", url = "http://bankapp-production-874c.up.railway.app"),
                 @Server(description = "Local", url = "http://localhost:8080")
         },
         security = { @SecurityRequirement(name = "bearerAuth") }
